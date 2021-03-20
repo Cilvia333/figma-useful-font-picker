@@ -1,7 +1,7 @@
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const path = require('path')
 
 module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
@@ -14,9 +14,9 @@ module.exports = (env, argv) => ({
 
   module: {
     rules: [
-      { test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/ },
-      { test: /\.css$/, use: ['style-loader', { loader: 'css-loader' }] },
-      { test: /\.(png|jpg|gif|webp|svg)$/, loader: 'url-loader' },
+      {test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/},
+      {test: /\.css$/, use: ['style-loader', {loader: 'css-loader'}]},
+      {test: /\.(png|jpg|gif|webp|svg)$/, loader: 'url-loader'},
     ],
   },
 
@@ -24,7 +24,7 @@ module.exports = (env, argv) => ({
     alias: {
       '~': path.resolve(rootPath, '/src'),
     },
-    extensions: ['.tsx', '.ts', '.jsx', '.js']
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
 
   output: {
@@ -41,6 +41,6 @@ module.exports = (env, argv) => ({
     }),
     new ScriptExtHtmlWebpackPlugin({
       inline: [/\ui.js$/],
-    })
+    }),
   ],
-})
+});
