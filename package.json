@@ -6,7 +6,7 @@
   "scripts": {
     "cleanup": "rimraf ./dist",
     "build": "yarn cleanup && webpack --mode=production",
-    "dev": "cleanup && webpack --mode=development --watch",
+    "dev": "yarn cleanup && webpack --mode=development --watch",
     "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:prettier": "prettier --check **/*.{json,yml,md}",
     "lint:prettier-json-rcfiles": "prettier .{eslint,prettier}rc --parser json",

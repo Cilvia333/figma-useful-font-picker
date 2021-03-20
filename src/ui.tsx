@@ -12,4 +12,4 @@ const App: React.FC = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('react-page'));
+ReactDOM.render(<App />, document.getElementById('app'));

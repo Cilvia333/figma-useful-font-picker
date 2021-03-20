@@ -3,8 +3,6 @@
 figma.showUI(__html__);
 
 figma.ui.onmessage = (msg) => {
-  console.log(msg);
-
   if (msg.type === 'create-rectangles') {
     const nodes = [];
 
@@ -19,6 +17,4 @@ figma.ui.onmessage = (msg) => {
     figma.currentPage.selection = nodes;
     figma.viewport.scrollAndZoomIntoView(nodes);
   }
-
-  figma.closePlugin();
 };

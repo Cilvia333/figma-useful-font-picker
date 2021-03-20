@@ -22,7 +22,7 @@ module.exports = (env, argv) => ({
 
   resolve: {
     alias: {
-      '~': path.resolve(rootPath, '/src'),
+      '~': path.resolve(__dirname, 'src'),
     },
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
@@ -36,8 +36,9 @@ module.exports = (env, argv) => ({
     new HtmlWebpackPlugin({
       template: './src/ui.html',
       filename: 'ui.html',
-      cache: false,
+      inlineSource: '.(js)$',
       chunks: ['ui'],
+      inject: 'body',
     }),
     new ScriptExtHtmlWebpackPlugin({
       inline: [/\ui.js$/],
