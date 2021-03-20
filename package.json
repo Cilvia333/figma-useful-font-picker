@@ -1,0 +1,33 @@
+{
+  "name": "Usefull-Font-Picker",
+  "version": "1.0.0",
+  "description": "A most useful font picker on figma",
+  "main": "code.js",
+  "scripts": {
+    "cleanup": "rimraf ./dist",
+    "build": "yarn cleanup && webpack --mode=production",
+    "dev": "cleanup && webpack --mode=development --watch"
+  },
+  "author": "cilvia333",
+  "license": "MIT",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.19.2",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.2",
+    "css-loader": "^5.1.3",
+    "html-webpack-inline-source-plugin": "^1.0.0-beta.2",
+    "html-webpack-plugin": "^5.3.1",
+    "rimraf": "^3.0.2",
+    "script-ext-html-webpack-plugin": "^2.1.5",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.18",
+    "typescript": "^4.2.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.27.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

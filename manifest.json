@@ -1,0 +1,7 @@
+{
+  "name": "Usefull Font Picker",
+  "id": "955013244208983447",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html"
+}
