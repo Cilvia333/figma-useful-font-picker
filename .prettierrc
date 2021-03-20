@@ -1,0 +1,12 @@
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "quoteProps": "consistent",
+  "bracketSpacing": false,
+  "overrides": [
+    {
+      "files": [".eslintrc", ".prettierrc", ".lintstagedrc", ".huskyrc"],
+      "options": { "parser": "json" }
+    }
+  ]
+}
