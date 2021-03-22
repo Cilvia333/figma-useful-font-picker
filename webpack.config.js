@@ -1,7 +1,10 @@
 const path = require('path');
 
+const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin')
+  .default;
+const HtmlInlineScriptPlugin = require('html-inline-script-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
@@ -14,8 +17,24 @@ module.exports = (env, argv) => ({
 
   module: {
     rules: [
-      {test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/},
-      {test: /\.css$/, use: ['style-loader', {loader: 'css-loader'}]},
+      {
+        test: /\.tsx?$/,
+        use: ['ts-loader'],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: path.resolve(__dirname, 'dist'),
+            },
+          },
+          {loader: 'css-loader', options: {importLoaders: 1}},
+          'postcss-loader',
+        ],
+      },
       {test: /\.(png|jpg|gif|webp|svg)$/, loader: 'url-loader'},
     ],
   },
@@ -33,6 +52,9 @@ module.exports = (env, argv) => ({
   },
 
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
     new HtmlWebpackPlugin({
       template: './src/ui.html',
       filename: 'ui.html',
@@ -40,8 +62,7 @@ module.exports = (env, argv) => ({
       chunks: ['ui'],
       inject: 'body',
     }),
-    new ScriptExtHtmlWebpackPlugin({
-      inline: [/\ui.js$/],
-    }),
+    new HtmlInlineScriptPlugin([/\ui.js$/]),
+    new HTMLInlineCSSWebpackPlugin(),
   ],
 });
