@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "jsx": "react",
+    "target": "esnext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
       "~/*": ["src/*"]

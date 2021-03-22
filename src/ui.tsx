@@ -1,8 +1,7 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import {h, FunctionComponent as FC, render} from 'preact';
 import 'tailwindcss/tailwind.css';
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <div>
       <h2>Rectangle Creator</h2>
@@ -15,4 +14,4 @@ const App: React.FC = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('app'));
+render(<App />, document.getElementById('app') ?? document.body);

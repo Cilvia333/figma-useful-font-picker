@@ -5,6 +5,7 @@ const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin')
 const HtmlInlineScriptPlugin = require('html-inline-script-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
@@ -18,8 +19,8 @@ module.exports = (env, argv) => ({
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: ['ts-loader'],
+        test: [/\.ts$/, /\.tsx$/, /\.js$/],
+        use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/,
       },
       {
@@ -44,6 +45,22 @@ module.exports = (env, argv) => ({
       '~': path.resolve(__dirname, 'src'),
     },
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
+  },
+
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          ecma: 6,
+          compress: true,
+          output: {
+            comments: false,
+            beautify: false,
+          },
+        },
+      }),
+    ],
   },
 
   output: {

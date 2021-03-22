@@ -7,7 +7,7 @@
     "eslint:recommended",
     "plugin:eslint-comments/recommended",
     "plugin:promise/recommended",
-    "plugin:react/recommended",
+    "preact",
     "plugin:jsx-a11y/recommended",
     "plugin:import/recommended",
     "plugin:prettier/recommended",
@@ -16,7 +16,7 @@
   "plugins": ["react-hooks"],
   "settings": {
     "react": {
-      "version": "detect"
+      "version": "preact"
     }
   },
   "rules": {
